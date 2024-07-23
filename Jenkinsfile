@@ -4,7 +4,7 @@ pipeline {
     environment {
         AWS_ACCESS_KEY_ID     = credentials('accesskey')
         AWS_SECRET_ACCESS_KEY = credentials('secretkey')
-        AWS_DEFAULT_REGION    = 'ap-south-1'
+        AWS_DEFAULT_REGION    = 'eu-north-1'
     }
 
 
@@ -24,9 +24,9 @@ pipeline {
                 sh 'terraform plan'
             }
         }           
-           stage('terraform destroy') {
+           stage('terraform apply') {
            steps {
-               sh 'terraform destroy --auto-approve'
+               sh 'terraform apply --auto-approve'
             }
         }
     }
